@@ -1,27 +1,19 @@
-
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Nckzxz | Portfólio</title>
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
 <style>
-  /* Reset e fontes globais */
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
   }
-
   html {
     scroll-behavior: smooth;
   }
-
   body {
-    background-color: #0a0a0a; /* tom mais escuro */
-    color: #e0e0e0; /* texto mais claro para contraste */
+    background-color: #f5f5f5;
+    color: #333;
     line-height: 1.6;
   }
 
@@ -31,43 +23,29 @@
     justify-content: space-between;
     align-items: center;
     padding: 2rem;
-    background-color: #0a0a0a;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
     z-index: 999;
   }
-
   .logo {
     font-size: 2rem;
     font-weight: 800;
-    color: #fff;
+    color: #222;
   }
-
-  nav {
-    display: flex;
-    gap: 2rem;
-  }
-
-  nav a, nav button {
-    color: #ccc;
+  nav a {
+    margin-left: 2rem;
+    color: #555;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
+  }
+  nav a:hover {
+    color: #007bff;
   }
 
-  nav a:hover,
-  nav a:focus,
-  nav button:hover,
-  nav button:focus {
-    color: #ff9800;
-    outline: none;
-  }
-
-  /* Responsividade do menu */
+  /* Responsividade */
   @media(max-width: 768px) {
     header {
       flex-direction: column;
@@ -75,8 +53,9 @@
     }
     nav {
       margin-top: 1rem;
-      flex-direction: column;
-      gap: 1rem;
+    }
+    .hero {
+      padding: 2rem 1rem;
     }
   }
 
@@ -86,114 +65,113 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 4rem 2rem;
-    background-color: #0a0a0a;
-    text-align: left;
+    background-color: #e0e0e0;
   }
-
   .hero h1 {
     font-size: 2.5rem;
     font-weight: 800;
-    color: #fff;
+    color: #222;
   }
-
   .hero span {
     font-size: 1.25rem;
     margin-top: 1rem;
-    color: #aaa;
+    color: #555;
   }
-
   .hero button {
     margin-top: 2rem;
     padding: 0.75rem 1.5rem;
-    background-color: #ff9800;
+    background-color: #007bff;
     border: none;
     border-radius: 8px;
-    color: #0f0f0f;
+    color: #fff;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
   }
-
   .hero button:hover {
-    background-color: #e68a00;
+    background-color: #0056b3;
   }
 
   /* Seções gerais */
   section {
     padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   /* Sobre */
   .sobre {
-    background-color: #1a1a1a;
+    background-color: #ffffff;
     border-radius: 12px;
     padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   }
   .sobre h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: #fff;
+    color: #222;
   }
   .sobre ul {
     margin-top: 1rem;
-    list-style-type: disc;
-    padding-left: 1.5rem;
-  }
-  .sobre li {
-    margin-bottom: 0.5rem;
+    list-style: disc inside;
   }
 
-  /* Portfólio */
-  .portfolio h2 {
-    margin-bottom: 1.5rem;
-    color: #fff;
-  }
-  .galeria {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
-  /* Removendo imagens do portfólio, colocando uma mensagem */
-  .portfolio .em-breve {
-    padding: 2rem;
-    background-color: #222;
+  /* Seção "Meus Trabalhos" */
+  .trabalhos {
+    background-color: #fafafa;
     border-radius: 12px;
-    color: #ccc;
-    font-size: 1.2rem;
+    padding: 2rem;
     text-align: center;
+  }
+  .trabalhos h2 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: #222;
+  }
+
+  /* Novo: Estilo para o vídeo embutido */
+  .projetos-video {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  .projetos-video video {
+    max-width: 800px;
+    width: 100%;
+    border-radius: 8px;
   }
 
   /* Contato */
   .contato h2 {
     margin-bottom: 1.5rem;
-    color: #fff;
+    color: #222;
   }
   .contato-buttons a {
     display: inline-block;
     margin-top: 1rem;
     margin-right: 1rem;
     padding: 0.75rem 1.5rem;
-    background-color: #ff9800;
-    color: #000;
+    background-color: #007bff;
+    color: #fff;
     font-weight: bold;
     border-radius: 8px;
     text-decoration: none;
     transition: background-color 0.3s;
   }
   .contato-buttons a:hover {
-    background-color: #e68a00;
+    background-color: #0056b3;
   }
 
   /* Rodapé */
   footer {
     text-align: center;
     padding: 2rem;
-    background-color: #0a0a0a;
+    background-color: #ffffff;
     color: #777;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
   }
 
-  /* Modal */
+  /* Modal de contato */
   .modal {
     display: none;
     position: fixed;
@@ -206,11 +184,8 @@
     justify-content: center;
     align-items: center;
   }
-  .modal.show {
-    display: flex;
-  }
   .modal-content {
-    background-color: #222;
+    background-color: #fff;
     padding: 2rem;
     border-radius: 12px;
     max-width: 500px;
@@ -223,11 +198,11 @@
     right: 15px;
     font-size: 1.5rem;
     cursor: pointer;
-    color: #ccc;
+    color: #555;
   }
   .modal-content h3 {
     margin-bottom: 1rem;
-    color: #fff;
+    color: #222;
   }
   .modal-content form {
     display: flex;
@@ -239,91 +214,87 @@
     margin-bottom: 1rem;
     border: none;
     border-radius: 8px;
-    background-color: #1f1f1f;
-    color: #fff;
+    background-color: #f0f0f0;
+    color: #222;
   }
   .modal-content button {
     padding: 0.75rem;
     border: none;
     border-radius: 8px;
-    background-color: #ff9800;
-    color: #000;
+    background-color: #007bff;
+    color: #fff;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
   }
   .modal-content button:hover {
-    background-color: #e68a00;
+    background-color: #0056b3;
   }
 </style>
-</head>
-<body>
 
+<body>
 <header>
-  <div class="logo" aria-label="Logo Nckzxz">Nckzxz</div>
-  <nav aria-label="Menu principal">
+  <div class="logo">Nckzxz</div>
+  <nav>
     <a href="#sobre">Sobre</a>
-    <a href="#portfolio">Portfólio</a>
+    <a href="#trabalhos">Meus Trabalhos</a>
+    <!-- removido o link de vídeos -->
     <a href="#contato">Contato</a>
-    <!-- Botão para abrir modal de contato -->
-    <button onclick="abrirModal()" aria-haspopup="dialog" aria-controls="modalContato" aria-expanded="false" style="background:none;border:none;color:#ccc;cursor:pointer;font-weight:500;">Fale comigo</button>
+    <a href="#" onclick="abrirModal()">Fale comigo</a>
   </nav>
 </header>
 
-<main>
-  <!-- Seção Hero -->
-  <section class="hero" aria-labelledby="hero-title">
-    <h1 id="hero-title">Programador e Gerente de Sistemas</h1>
-    <span>Transformando ideias em soluções eficientes.</span>
-    <button onclick="scrollToPortfolio()">Ver Projetos em Breve</button>
-  </section>
+<section class="hero">
+  <h1>Programador e Gerente de Sistemas</h1>
+  <span>Transformando ideias em soluções eficientes.</span>
+  <button onclick="scrollToPortfolio()">Meus Projetos Estarão Aqui em Breve</button>
+</section>
 
-  <!-- Sobre Mim -->
-  <section id="sobre" class="sobre" aria-labelledby="sobre-title">
-    <h2 id="sobre-title">Sobre Mim</h2>
-    <p>Sou um profissional apaixonado por tecnologia, com experiência em desenvolvimento de software e gerenciamento de sistemas complexos. Busco sempre entregar soluções que unem desempenho, segurança e inovação.</p>
-    <ul>
-      <li>Desenvolvimento fullstack</li>
-      <li>Gerência de servidores e banco de dados</li>
-      <li>Automação de processos e integração de sistemas</li>
-    </ul>
-  </section>
+<section id="sobre" class="sobre">
+  <h2>Sobre Mim</h2>
+  <p>Sou um profissional apaixonado por tecnologia, com experiência em desenvolvimento de software e gerenciamento de sistemas complexos. Busco sempre entregar soluções que unem desempenho, segurança e inovação.</p>
+  <ul>
+    <li>Desenvolvimento fullstack</li>
+    <li>Gerência de servidores e banco de dados</li>
+    <li>Automação de processos e integração de sistemas</li>
+  </ul>
+</section>
 
-  <!-- Portfólio -->
-  <section id="portfolio" class="portfolio" aria-labelledby="portfolio-title">
-    <h2 id="portfolio-title">Portfólio</h2>
-    <div class="galeria">
-      <!-- Mensagem de breve -->
-      <div class="em-breve">
-        Em breve colocarei meus trabalhos por aqui!
-      </div>
-    </div>
-  </section>
+<!-- Seção "Meus Trabalhos" com vídeo do Imgur -->
+<section id="trabalhos" class="trabalhos">
+  <h2>Meus Projetos</h2>
+  <!-- Vídeo hospedado no Imgur ou outra plataforma -->
+  <div class="projetos-video">
+    <video controls>
+      <!-- Substitua o src abaixo pelo seu link real do vídeo -->
+      <source src="https://i.imgur.com/SEU_VIDEO.mp4" type="video/mp4" />
+      Seu navegador não suporta a tag de vídeo.
+    </video>
+  </div>
+</section>
 
-  <!-- Contato -->
-  <section id="contato" class="contato" aria-labelledby="contato-title">
-    <h2 id="contato-title">Contato</h2>
-    <div class="contato-buttons">
-      <a href="https://instagram.com/nckzxz" target="_blank" rel="noopener noreferrer">Instagram: @nckzxz</a>
-      <a href="https://wa.me/5514998798097" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-    </div>
-    <p style="margin-top: 2rem;">Quer enviar uma mensagem direta? Clique aqui para abrir o formulário:</p>
-    <button onclick="abrirModal()">Fale comigo</button>
-  </section>
-</main>
+<!-- A seção de vídeos foi removida -->
 
-<!-- Rodapé -->
+<section id="contato" class="contato">
+  <h2>Contato</h2>
+  <div class="contato-buttons">
+    <a href="https://instagram.com/nckzxz" target="_blank">Instagram: @nckzxz</a>
+    <a href="https://wa.me/5514998798097" target="_blank">WhatsApp</a>
+  </div>
+  <p style="margin-top: 2rem;">Quer enviar uma mensagem direta? Clique aqui para abrir o formulário:</p>
+  <button onclick="abrirModal()">Fale comigo</button>
+</section>
+
 <footer>
   &copy; 2025 Nckzxz. Todos os direitos reservados.
 </footer>
 
 <!-- Modal de contato -->
-<div class="modal" id="modalContato" role="dialog" aria-modal="true" aria-labelledby="modalContatoLabel" aria-describedby="modalContatoDesc">
+<div class="modal" id="modalContato">
   <div class="modal-content">
-    <div class="modal-close" aria-label="Fechar" onclick="fecharModal()">&times;</div>
-    <h3 id="modalContatoLabel">Enviar mensagem</h3>
-    <p id="modalContatoDesc">Preencha o formulário abaixo para enviar sua mensagem.</p>
-    <form id="formContato" aria-labelledby="modalContatoLabel">
+    <div class="modal-close" onclick="fecharModal()">&times;</div>
+    <h3>Enviar mensagem</h3>
+    <form id="formContato">
       <input type="text" placeholder="Seu nome" required />
       <input type="email" placeholder="Seu email" required />
       <textarea rows="4" placeholder="Sua mensagem" required></textarea>
@@ -335,38 +306,29 @@
 <script>
   // Função para scroll suave até o portfólio
   function scrollToPortfolio() {
-    document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('trabalhos').scrollIntoView({ behavior: 'smooth' });
   }
 
-  const modal = document.getElementById('modalContato');
-
+  // Funções para abrir e fechar modal
   function abrirModal() {
-    modal.classList.add('show');
-    // Para acessibilidade, atualizar aria-expanded
-    const toggleButton = document.querySelector('nav button[aria-controls="modalContato"]');
-    if (toggleButton) toggleButton.setAttribute('aria-expanded', 'true');
+    document.getElementById('modalContato').style.display = 'flex';
   }
-
   function fecharModal() {
-    modal.classList.remove('show');
-    const toggleButton = document.querySelector('nav button[aria-controls="modalContato"]');
-    if (toggleButton) toggleButton.setAttribute('aria-expanded', 'false');
+    document.getElementById('modalContato').style.display = 'none';
   }
-
   // Fechar modal ao clicar fora
-  window.onclick = function (event) {
-    if (event.target === modal) {
+  window.onclick = function(event) {
+    const modal = document.getElementById('modalContato');
+    if (event.target == modal) {
       fecharModal();
     }
   };
 
-  // Envio do formulário
-  document.getElementById('formContato').addEventListener('submit', function (e) {
+  // Enviar formulário (exemplo)
+  document.getElementById('formContato').addEventListener('submit', function(e) {
     e.preventDefault();
     alert('Mensagem enviada! Obrigado por entrar em contato.');
     fecharModal();
   });
 </script>
-
 </body>
-</html>
