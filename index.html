@@ -2,75 +2,210 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nckzxz | Portfólio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Site Profissional Moderno</title>
+  <!-- Fonte Google Fonts: Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    /* Reset e base */
+    /* Variáveis de cores em preto e branco */
+    :root {
+      --cor-principal: #000; /* preto */
+      --cor-secundaria: #fff; /* branco */
+      --cor-fundo: #121212; /* fundo escuro */
+      --cor-texto: #fff; /* texto branco */
+      --cor-acento: #555; /* detalhes cinza claro */
+    }
+
+    /* Reset básico */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
-
-    html {
-      scroll-behavior: smooth;
     }
 
     body {
-      background-color: #f5f5f5;
-      color: #333;
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--cor-fundo);
+      color: var(--cor-texto);
       line-height: 1.6;
+      /* padding-top ajustado para o cabeçalho fixo */
+      padding-top: 80px;
     }
 
-    /* Cabeçalho */
+    /* Cabeçalho fixo */
     header {
+      position: fixed; /* fixa no topo */
+      top: 0;
+      left: 0;
+      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 2rem;
-      background-color: #fff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 999;
+      padding: 20px 40px;
+      background-color: transparent;
+      z-index: 9999;
+      max-width: 1200px;
+      margin: 0 auto;
+      backdrop-filter: blur(10px);
     }
 
-    .logo {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #222;
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
     }
 
-    nav a,
-    .btn-link {
-      margin-left: 2rem;
-      color: #555;
+    nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      color: var(--cor-texto);
       text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s, transform 0.3s;
     }
 
-    nav a:hover,
-    .btn-link:hover {
-      color: #007bff;
+    nav a:hover {
+      color: #ccc;
+      transform: scale(1.05);
     }
 
-    /* Botão estilizado */
-    .btn-primary {
-      padding: 0.75rem 1.5rem;
-      background-color: #007bff;
-      border: none;
+    /* Seção hero com animação de entrada */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px 20px;
+      min-height: 100vh;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 30px;
+      color: #ccc;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      background: transparent;
+      border: 2px solid var(--cor-texto);
       border-radius: 8px;
-      color: #fff;
-      font-weight: bold;
+      color: var(--cor-texto);
+      font-size: 1rem;
       cursor: pointer;
-      transition: background-color 0.3s;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s, transform 0.3s;
     }
 
-    .btn-primary:hover {
-      background-color: #0056b3;
+    .btn:hover {
+      background: var(--cor-texto);
+      color: var(--cor-fundo);
+      transform: translateY(-3px);
+    }
+
+    /* Seções internas com animações */
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeInUp 1s forwards;
+    }
+
+    section h3 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    /* Lista de serviços */
+    ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    li {
+      background: transparent;
+      border: 2px solid var(--cor-acento);
+      padding: 20px;
+      border-radius: 10px;
+      width: 250px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    li:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    /* Rodapé com ícones sociais estilizados */
+    footer {
+      padding: 40px 20px;
+      background-color: transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      text-align: center;
+    }
+
+    /* Ícones sociais */
+    .social-icons {
+      display: flex;
+      gap: 30px;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      color: #fff; /* cor dos ícones em branco */
+      transition: transform 0.3s, fill 0.3s, filter 0.3s;
+    }
+
+    /* Ícones SVG com cor branca */
+    .social-icons svg {
+      width: 100%;
+      height: 100%;
+      fill: currentColor; /* usa a cor do elemento pai */
+      transition: transform 0.3s, fill 0.3s, filter 0.3s;
+    }
+
+    /* Hover mais estiloso: escurecer ou aumentar */
+    .social-icons a:hover {
+      transform: scale(1.2);
+      filter: brightness(0.8);
+    }
+
+    /* Animações CSS modernas */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* Responsividade */
@@ -79,290 +214,85 @@
         flex-direction: column;
         align-items: center;
       }
+
       nav {
-        margin-top: 1rem;
+        flex-direction: column;
+        gap: 15px;
       }
-      .hero {
-        padding: 2rem 1rem;
+
+      .hero h2 {
+        font-size: 2rem;
       }
-    }
 
-    /* Seções gerais */
-    section {
-      padding: 3rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* Hero */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 4rem 2rem;
-      background-color: #e0e0e0;
-    }
-    .hero h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #222;
-    }
-    .hero span {
-      font-size: 1.25rem;
-      margin-top: 1rem;
-      color: #555;
-    }
-    .hero button {
-      margin-top: 2rem;
-    }
-
-    /* Sobre */
-    .sobre {
-      background-color: #fff;
-      border-radius: 12px;
-      padding: 2rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-    .sobre h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #222;
-    }
-    .sobre ul {
-      margin-top: 1rem;
-      list-style: disc inside;
-    }
-
-    /* Trabalhos */
-    .trabalhos {
-      background-color: #fafafa;
-      border-radius: 12px;
-      padding: 2rem;
-      text-align: center;
-    }
-    .trabalhos h2 {
-      margin-bottom: 2rem;
-      font-size: 2rem;
-      color: #222;
-    }
-    .projetos-video {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 2rem;
-    }
-    .projetos-video video {
-      max-width: 800px;
-      width: 100%;
-      border-radius: 8px;
-    }
-    .projetos-video p {
-      margin-top: 0.5rem;
-      font-style: italic;
-      text-align: center;
-      color: #555;
-    }
-
-    /* Contato */
-    .contato h2 {
-      margin-bottom: 1.5rem;
-      color: #222;
-    }
-    .contato-buttons a {
-      display: inline-block;
-      margin-top: 1rem;
-      margin-right: 1rem;
-      padding: 0.75rem 1.5rem;
-      background-color: #007bff;
-      color: #fff;
-      font-weight: bold;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background-color 0.3s;
-    }
-    .contato-buttons a:hover {
-      background-color: #0056b3;
-    }
-
-    /* Rodapé */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: #fff;
-      color: #777;
-      box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
-    }
-
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.7);
-      justify-content: center;
-      align-items: center;
-    }
-    .modal[aria-hidden="false"] {
-      display: flex;
-    }
-    .modal-content {
-      background-color: #fff;
-      padding: 2rem;
-      border-radius: 12px;
-      max-width: 500px;
-      width: 90%;
-      position: relative;
-    }
-    .modal-close {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: #555;
-      background: none;
-      border: none;
-    }
-    .modal-content h3 {
-      margin-bottom: 1rem;
-      color: #222;
-    }
-    .modal-content form {
-      display: flex;
-      flex-direction: column;
-    }
-    .modal-content input,
-    .modal-content textarea {
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border: none;
-      border-radius: 8px;
-      background-color: #f0f0f0;
-      color: #222;
-    }
-    .modal-content button {
-      padding: 0.75rem;
-      border: none;
-      border-radius: 8px;
-      background-color: #007bff;
-      color: #fff;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    .modal-content button:hover {
-      background-color: #0056b3;
+      ul {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
 <body>
-<header>
-  <div class="logo">Nckzxz</div>
-  <nav>
-    <a href="#sobre">Sobre</a>
-    <a href="#trabalhos">Meus Trabalhos</a>
-    <a href="#contato">Contato</a>
-    <button class="btn-link" onclick="abrirModal()">Fale comigo</button>
-  </nav>
-</header>
 
-<main>
+  <!-- Cabeçalho fixo -->
+  <header>
+    <h1>N-Tecnologies</h1>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
   <!-- Seção Hero -->
   <section class="hero">
-    <h1>Programador e Gerente de Sistemas</h1>
-    <span>Transformando ideias em soluções eficientes.</span>
-    <button class="btn-primary" onclick="scrollToPortfolio()">Confira meus projetos.</button>
+    <h2>Design e Desenvolvimento Moderno</h2>
+    <p>Deseja um site profissional com animações suaves, efeitos modernos e visual impactante? Fazemos tudo do zero!</p>
+    <a href="#contato" class="btn">Vamos conversar</a>
   </section>
 
   <!-- Sobre -->
-  <section id="sobre" class="sobre">
-    <h2>Sobre Mim</h2>
-    <p>Sou um profissional apaixonado por tecnologia, com experiência em desenvolvimento de software e gerenciamento de sistemas complexos. Busco sempre entregar soluções que unem desempenho, segurança e inovação.</p>
+  <section id="sobre">
+    <h3>Quem Sou</h3>
+    <p>Sou especialista em criar websites modernos, responsivos e cheios de animações suaves que encantam seus visitantes e elevam sua marca ao próximo nível.</p>
+  </section>
+
+  <!-- Serviços -->
+  <section id="servicos">
+    <h3>O que ofereço</h3>
     <ul>
-      <li>Desenvolvimento fullstack</li>
-      <li>Gerência de servidores e banco de dados</li>
-      <li>Automação de processos e integração de sistemas</li>
+      <li>Design Totalmente Personalizado</li>
+      <li>Animações Fluidamente Suaves</li>
+      <li>Responsividade Total</li>
+      <li>Otimização SEO</li>
     </ul>
   </section>
 
-  <!-- Trabalhos -->
-  <section id="trabalhos" class="trabalhos">
-    <h2>Meus Projetos</h2>
-    <div class="projetos-video">
-      <video autoplay loop muted>
-        <source src="https://i.imgur.com/qhqScP5.mp4" type="video/mp4" />
-        Seu navegador não suporta o elemento de vídeo.
-      </video>
-      <p>Deseja um Website, App ou Cartão Virtual? Entre em contato logo abaixo.</p>
-    </div>
-  </section>
-
   <!-- Contato -->
-  <section id="contato" class="contato">
-    <h2>Contato</h2>
-    <div class="contato-buttons">
-      <a href="https://instagram.com/nckzxz" target="_blank" rel="noopener noreferrer">Instagram: @nckzxz</a>
-      <a href="https://wa.me/5514998798097" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-    </div>
-    <p style="margin-top: 2rem;">Quer enviar uma mensagem direta? Clique aqui para abrir o formulário:</p>
-    <button class="btn-primary" onclick="abrirModal()">Fale comigo</button>
+  <section id="contato">
+    <h3>Entre em contato</h3>
+    <p>Para orçamentos ou mais informações fale comigo pelo email: ericmitnic@gmail.com</p>
   </section>
-</main>
 
-<!-- Rodapé -->
-<footer>
-  &copy; 2025 Nckzxz. Todos os direitos reservados.
-</footer>
+  <!-- Rodapé com ícones sociais -->
+  <footer>
+    <div class="social-icons">
+      <!-- Ícone Instagram -->
+      <a href="https://instagram.com/nckzxz" target="_blank" aria-label="Instagram">
+        <!-- SVG do Instagram -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.055 1.97.24 2.43.404a4.92 4.92 0 011.75 1.012 4.92 4.92 0 011.012 1.75c.164.46.349 1.26.404 2.43.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.055 1.17-.24 1.97-.404 2.43a4.92 4.92 0 01-1.012 1.75 4.92 4.92 0 01-1.75 1.012c-.46.164-1.26.349-2.43.404-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.055-1.97-.24-2.43-.404a4.92 4.92 0 01-1.75-1.012 4.92 4.92 0 01-1.012-1.75c-.164-.46-.349-1.26-.404-2.43C2.175 15.747 2.163 15.367 2.163 12s.012-3.584.07-4.85c.055-1.17.24-1.97.404-2.43a4.92 4.92 0 011.012-1.75 4.92 4.92 0 011.75-1.012c.46-.164 1.26-.349 2.43-.404C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.736 0 8.332.012 7.052.07 5.772.127 4.927.319 4.237.616a6.918 6.918 0 00-2.5 1.63A6.918 6.918 0 00.616 4.237c-.297.69-.489 1.535-.546 2.815C2 8.736 2 9.14 2 12s.012 3.264.07 4.544c.057 1.28.249 2.125.546 2.815a6.918 6.918 0 001.63 2.5 6.918 6.918 0 002.5 1.63c.69.297 1.535.489 2.815.546 1.28.057 1.684.07 4.544.07s3.264-.012 4.544-.07c1.28-.057 2.125-.249 2.815-.546a6.918 6.918 0 002.5-1.63 6.918 6.918 0 001.63-2.5c.297-.69.489-1.535.546-2.815.058-1.28.07-1.684.07-4.544s-.012-3.264-.07-4.544c-.057-1.28-.249-2.125-.546-2.815a6.918 6.918 0 00-1.63-2.5 6.918 6.918 0 00-2.5-1.63c-.69-.297-1.535-.489-2.815-.546C15.264 0 14.86 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998zm6.406-11.845a1.44 1.44 0 11-2.881 0 1.44 1.44 0 012.881 0z"/>
+        </svg>
+      </a>
+      <!-- Ícone WhatsApp -->
+      <a href="https://wa.me/5514998798097" target="_blank" aria-label="WhatsApp">
+        <!-- SVG do WhatsApp -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="50" height="50">
+          <path fill="currentColor" d="M20.52 3.48A12.84 12.84 0 0012 0C5.4 0 0 5.4 0 12c0 2.14.53 4.17 1.52 6l-1.52 5.52L7.5 21a11.94 11.94 0 006.5 1.92c6.6 0 12-5.4 12-12 0-3.4-1.4-6.6-3.48-8.52zm-8.52 17.4c-1.74 0-3.42-.52-4.84-1.44l-.34-.2-2.86.94.96-2.84-.2-.34a6.28 6.28 0 01-1.44-4.84 6.3 6.3 0 016.3-6.3c3.48 0 6.3 2.82 6.3 6.3s-2.82 6.3-6.3 6.3zm3.36-4.86c-.18-.09-1.08-.53-1.24-.59s-.3-.09-.42.09-.48.59-.58.72-.22.18-.42.09-.49-.18-.73-.36-.33-.36-.42-.44.24-.36.48-.72.54-.89.72-1.09.27-.15.49-.06.54.24.72.48.33.38.39.44.09.09.15.14c.06.06.06.12.03.21s-.09.21-.27.3z"/>
+        </svg>
+      </a>
+    </div>
+    <p>&copy; 2025 Nckzxz. Todos os direitos reservados.</p>
+  </footer>
 
-<!-- Modal de contato -->
-<div id="modalContato" class="modal" aria-hidden="true">
-  <div class="modal-content">
-    <button class="modal-close" aria-label="Fechar" onclick="fecharModal()">&times;</button>
-    <h3>Enviar mensagem</h3>
-    <form id="formContato">
-      <input type="text" placeholder="Seu nome" required />
-      <input type="email" placeholder="Seu email" required />
-      <textarea rows="4" placeholder="Sua mensagem" required></textarea>
-      <button type="submit" class="btn-primary">Enviar</button>
-    </form>
-  </div>
-</div>
-
-<script>
-  // Função para scroll suave até o portfólio
-  function scrollToPortfolio() {
-    document.getElementById('trabalhos').scrollIntoView({ behavior: 'smooth' });
-  }
-
-  // Modal
-  const modal = document.getElementById('modalContato');
-
-  function abrirModal() {
-    modal.setAttribute('aria-hidden', 'false');
-    modal.style.display = 'flex';
-  }
-  function fecharModal() {
-    modal.setAttribute('aria-hidden', 'true');
-    modal.style.display = 'none';
-  }
-
-  // Fechar modal ao clicar fora
-  window.onclick = function(event) {
-    if (event.target === modal) {
-      fecharModal();
-    }
-  };
-
-  // Enviar formulário
-  document.getElementById('formContato').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Mensagem enviada! Obrigado por entrar em contato.');
-    fecharModal();
-  });
-</script>
 </body>
 </html>
