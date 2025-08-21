@@ -1,298 +1,1211 @@
-
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Site Profissional Moderno</title>
-  <!-- Fonte Google Fonts: Montserrat -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    /* Variáveis de cores em preto e branco */
-    :root {
-      --cor-principal: #000; /* preto */
-      --cor-secundaria: #fff; /* branco */
-      --cor-fundo: #121212; /* fundo escuro */
-      --cor-texto: #fff; /* texto branco */
-      --cor-acento: #555; /* detalhes cinza claro */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N-Tecnologies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variáveis de cores - preto e branco */
+        :root {
+            --primary: #000000;
+            --secondary: #333333;
+            --accent: #666666;
+            --light: #f5f5f5;
+            --dark: #111111;
+            --text: #212121;
+            --background: #ffffff;
+            --gray-light: #e0e0e0;
+            --gray-medium: #9e9e9e;
+            --success: #4CAF50;
+        }
 
-    /* Reset básico */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: var(--cor-fundo);
-      color: var(--cor-texto);
-      line-height: 1.6;
-      /* padding-top ajustado para o cabeçalho fixo */
-      padding-top: 80px;
-    }
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--background);
+            overflow-x: hidden;
+        }
 
-    /* Cabeçalho fixo */
-    header {
-      position: fixed; /* fixa no topo */
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background-color: transparent;
-      z-index: 9999;
-      max-width: 1200px;
-      margin: 0 auto;
-      backdrop-filter: blur(10px);
-    }
+        /* Container principal */
+        .container {
+            width: 92%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
 
-    header h1 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-    }
+        /* Cabeçalho e navegação */
+        header {
+            background: var(--background);
+            padding: 18px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.07);
+            border-bottom: 1px solid var(--gray-light);
+        }
 
-    nav {
-      display: flex;
-      gap: 30px;
-    }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    nav a {
-      color: var(--cor-texto);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: color 0.3s, transform 0.3s;
-    }
+        .logo {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
 
-    nav a:hover {
-      color: #ccc;
-      transform: scale(1.05);
-    }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
 
-    /* Seção hero com animação de entrada */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 80px 20px;
-      min-height: 100vh;
-    }
+        .nav-links li {
+            margin-left: 32px;
+        }
 
-    .hero h2 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
+        .nav-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            position: relative;
+        }
 
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin-bottom: 30px;
-      color: #ccc;
-    }
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
 
-    .btn {
-      padding: 15px 30px;
-      background: transparent;
-      border: 2px solid var(--cor-texto);
-      border-radius: 8px;
-      color: var(--cor-texto);
-      font-size: 1rem;
-      cursor: pointer;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.3s, color 0.3s, transform 0.3s;
-    }
+        .nav-links a:hover:after {
+            width: 100%;
+        }
 
-    .btn:hover {
-      background: var(--cor-texto);
-      color: var(--cor-fundo);
-      transform: translateY(-3px);
-    }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
 
-    /* Seções internas com animações */
-    section {
-      padding: 60px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(50px);
-      animation: fadeInUp 1s forwards;
-    }
+        .menu-toggle {
+            display: none;
+            color: var(--primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
 
-    section h3 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      font-weight: 700;
-    }
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 100px;
+            background: var(--background);
+            color: var(--text);
+            text-align: center;
+            position: relative;
+        }
 
-    /* Lista de serviços */
-    ul {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
+        .hero:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--gray-light);
+        }
 
-    li {
-      background: transparent;
-      border: 2px solid var(--cor-acento);
-      padding: 20px;
-      border-radius: 10px;
-      width: 250px;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 24px;
+            animation: fadeInDown 1s ease;
+            font-weight: 800;
+            line-height: 1.2;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-    li:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
+        .hero p {
+            font-size: 1.18rem;
+            max-width: 700px;
+            margin: 0 auto 36px;
+            animation: fadeInUp 1s ease;
+            color: var(--secondary);
+            font-weight: 400;
+            line-height: 1.6;
+        }
 
-    /* Rodapé com ícones sociais estilizados */
-    footer {
-      padding: 40px 20px;
-      background-color: transparent;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      text-align: center;
-    }
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 2px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            animation: fadeIn 1.5s ease;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            border: 1px solid var(--primary);
+        }
 
-    /* Ícones sociais */
-    .social-icons {
-      display: flex;
-      gap: 30px;
-    }
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            margin-left: 15px;
+        }
 
-    .social-icons a {
-      display: inline-block;
-      width: 50px;
-      height: 50px;
-      color: #fff; /* cor dos ícones em branco */
-      transition: transform 0.3s, fill 0.3s, filter 0.3s;
-    }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
 
-    /* Ícones SVG com cor branca */
-    .social-icons svg {
-      width: 100%;
-      height: 100%;
-      fill: currentColor; /* usa a cor do elemento pai */
-      transition: transform 0.3s, fill 0.3s, filter 0.3s;
-    }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
 
-    /* Hover mais estiloso: escurecer ou aumentar */
-    .social-icons a:hover {
-      transform: scale(1.2);
-      filter: brightness(0.8);
-    }
+        /* Seções */
+        section {
+            padding: 90px 0;
+            position: relative;
+        }
 
-    /* Animações CSS modernas */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+        section:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--gray-light);
+        }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
 
-    /* Responsividade */
-    @media(max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: center;
-      }
+        .section-title h2 {
+            font-size: 2.4rem;
+            color: var(--primary);
+            margin-bottom: 18px;
+            position: relative;
+            display: inline-block;
+            font-weight: 800;
+        }
 
-      nav {
-        flex-direction: column;
-        gap: 15px;
-      }
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+        }
 
-      .hero h2 {
-        font-size: 2rem;
-      }
+        .section-title p {
+            color: var(--secondary);
+            max-width: 600px;
+            margin: 25px auto 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
 
-      ul {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-  </style>
+        /* Recursos */
+        .features {
+            background-color: var(--background);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--background);
+            padding: 40px 30px;
+            border-radius: 2px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid var(--gray-light);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.09);
+            border-color: var(--gray-medium);
+        }
+
+        .feature-icon {
+            font-size: 2.3rem;
+            color: var(--primary);
+            margin-bottom: 24px;
+            background: var(--light);
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--secondary);
+            line-height: 1.6;
+        }
+
+        /* Seção de Projetos */
+        .projects {
+            background-color: var(--light);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .project-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            height: 250px;
+            cursor: pointer;
+        }
+
+        .project-item img,
+        .project-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .project-item:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-item:hover img,
+        .project-item:hover video {
+            transform: scale(1.1);
+        }
+
+        .project-title {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .project-category {
+            color: var(--gray-light);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .project-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            border: 1px solid white;
+            padding: 6px 15px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Modal de Projeto */
+        .project-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .project-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 900px;
+            width: 90%;
+            max-height: 90vh;
+            overflow: auto;
+            background: var(--background);
+            padding: 30px;
+            border-radius: 2px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            z-index: 10;
+        }
+
+        .modal-body {
+            margin-top: 20px;
+        }
+
+        .modal-body img,
+        .modal-body video {
+            width: 100%;
+            border-radius: 2px;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .modal-description {
+            color: var(--secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Depoimentos */
+        .testimonials {
+            background: var(--light);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--background);
+            padding: 35px 30px;
+            border-radius: 2px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--gray-light);
+            position: relative;
+        }
+
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 4rem;
+            color: var(--gray-light);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 25px;
+            color: var(--secondary);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .author-info p {
+            color: var(--gray-medium);
+            font-size: 0.9rem;
+        }
+
+        /* Contato */
+        .contact {
+            background-color: var(--background);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--background);
+            padding: 45px;
+            border-radius: 2px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--gray-light);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--secondary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--gray-light);
+            border-radius: 2px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            background: var(--background);
+            color: var(--text);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+            outline: none;
+        }
+
+        textarea.form-control {
+            min-height: 160px;
+            resize: vertical;
+        }
+
+        /* Mensagem de confirmação */
+        .form-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 2px;
+            text-align: center;
+            display: none;
+        }
+
+        .form-message.success {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: var(--success);
+            border: 1px solid var(--success);
+            display: block;
+        }
+
+        /* Rodapé */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 70px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 22px;
+            display: block;
+            color: white;
+        }
+
+        .footer-about p {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            max-width: 300px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            width: 38px;
+            height: 38px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+            background: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 22px;
+            position: relative;
+            padding-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .footer-links h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 35px;
+            height: 2px;
+            background: white;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-contact li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .footer-contact i {
+            margin-right: 12px;
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsividade melhorada */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .features-grid, .testimonial-grid, .footer-grid, .projects-grid {
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 15px;
+                display: inline-block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 94%;
+                padding: 0 15px;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 280px;
+                height: calc(100vh - 70px);
+                background: var(--background);
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                transition: all 0.4s ease;
+                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.08);
+                padding: 30px;
+                overflow-y: auto;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 0 0 20px 0;
+                width: 100%;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+                padding: 8px 0;
+                display: block;
+                width: 100%;
+            }
+
+            .hero {
+                padding: 90px 0 70px;
+            }
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+
+            .feature-card, .testimonial-card {
+                padding: 30px 25px;
+            }
+
+            .contact-form {
+                padding: 30px 25px;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+                line-height: 1.3;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 12px 28px;
+                font-size: 0.85rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title p {
+                font-size: 1rem;
+            }
+            
+            .feature-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+            
+            .footer-grid {
+                gap: 35px;
+            }
+            
+            .testimonial-card:before {
+                font-size: 3rem;
+                top: 15px;
+                right: 20px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-item {
+                height: 220px;
+            }
+
+            .modal-content {
+                padding: 20px;
+                width: 95%;
+            }
+
+            .modal-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container navbar">
+            <a href="#" class="logo">N-Tecnologies</a>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#">Início</a></li>
+                <li><a href="#features">Recursos</a></li>
+                <li><a href="#projects">Meus Projetos</a></li>
+                <li><a href="#testimonials">Depoimentos</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </div>
+    </header>
 
-  <!-- Cabeçalho fixo -->
-  <header>
-    <h1>N-Tecnologies</h1>
-    <nav>
-      <a href="#sobre">Sobre</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#contato">Contato</a>
-    </nav>
-  </header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Design minimalista com poder máximo</h1>
+            <p>Um visual clean que eleva sua presença digital e transmite sofisticação e clareza.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn">Começar Agora</a>
+                <a href="#projects" class="btn btn-outline">Ver Projetos</a>
+            </div>
+        </div>
+    </section>
 
-  <!-- Seção Hero -->
-  <section class="hero">
-    <h2>Design e Desenvolvimento Moderno</h2>
-    <p>Deseja um site profissional com animações suaves, efeitos modernos e visual impactante? Fazemos tudo do zero!</p>
-    <a href="#contato" class="btn">Vamos conversar</a>
-  </section>
+    <!-- Recursos -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Recursos</h2>
+                <p>Características que fazem a diferença na experiência do usuário</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Design Limpo</h3>
+                    <p>Estética minimalista que prioriza o conteúdo e a funcionalidade sem distrações desnecessárias.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Responsividade Total</h3>
+                    <p>Adaptação perfeita a todos os dispositivos, garantindo a melhor experiência independente do tamanho da tela.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Performance</h3>
+                    <p>Carregamento ultrarrápido e desempenho otimizado para manter seus usuários engajados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Sobre -->
-  <section id="sobre">
-    <h3>Quem Sou</h3>
-    <p>Sou especialista em criar websites modernos, responsivos e cheios de animações suaves que encantam seus visitantes e elevam sua marca ao próximo nível.</p>
-  </section>
+    <!-- Seção de Projetos -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meus Projetos</h2>
+                <p>Uma seleção dos meus trabalhos em Web Design</p>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Projeto 1 - Sayu's Shop -->
+                <div class="project-item">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://i.imgur.com/hUjfAL3.mp4" type="video/mp4">
+                        Seu navegador não suporta vídeos HTML5.
+                    </video>
+                    <div class="project-overlay">
+                        <h3 class="project-title">Sayu's Shop</h3>
+                        <p class="project-category">E-commerce</p>
+                        <a href="#" class="project-link">Ver Detalhes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Serviços -->
-  <section id="servicos">
-    <h3>O que ofereço</h3>
-    <ul>
-      <li>Design Totalmente Personalizado</li>
-      <li>Aplicativos, Cartão de Visita Virtual, Hospedagem, Gerência de Servidores e Muito Mais</li>
-      <li>Responsividade Total</li>
-      <li>Otimização SEO</li>
-    </ul>
-  </section>
-
-  <!-- Contato -->
-  <section id="contato">
-    <h3>Entre em contato</h3>
-    <p>Para orçamentos ou mais informações fale comigo pelo email: ericmitnic@gmail.com</p>
-  </section>
-
-  <!-- Rodapé com ícones sociais -->
-  <footer>
-    <div class="social-icons">
-      <!-- Ícone Instagram -->
-      <a href="https://instagram.com/nckzxz" target="_blank" aria-label="Instagram">
-        <!-- SVG do Instagram -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.055 1.97.24 2.43.404a4.92 4.92 0 011.75 1.012 4.92 4.92 0 011.012 1.75c.164.46.349 1.26.404 2.43.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.055 1.17-.24 1.97-.404 2.43a4.92 4.92 0 01-1.012 1.75 4.92 4.92 0 01-1.75 1.012c-.46.164-1.26.349-2.43.404-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.055-1.97-.24-2.43-.404a4.92 4.92 0 01-1.75-1.012 4.92 4.92 0 01-1.012-1.75c-.164-.46-.349-1.26-.404-2.43C2.175 15.747 2.163 15.367 2.163 12s.012-3.584.07-4.85c.055-1.17.24-1.97.404-2.43a4.92 4.92 0 011.012-1.75 4.92 4.92 0 011.75-1.012c.46-.164 1.26-.349 2.43-.404C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.736 0 8.332.012 7.052.07 5.772.127 4.927.319 4.237.616a6.918 6.918 0 00-2.5 1.63A6.918 6.918 0 00.616 4.237c-.297.69-.489 1.535-.546 2.815C2 8.736 2 9.14 2 12s.012 3.264.07 4.544c.057 1.28.249 2.125.546 2.815a6.918 6.918 0 001.63 2.5 6.918 6.918 0 002.5 1.63c.69.297 1.535.489 2.815.546 1.28.057 1.684.07 4.544.07s3.264-.012 4.544-.07c1.28-.057 2.125-.249 2.815-.546a6.918 6.918 0 002.5-1.63 6.918 6.918 0 001.63-2.5c.297-.69.489-1.535.546-2.815.058-1.28.07-1.684.07-4.544s-.012-3.264-.07-4.544c-.057-1.28-.249-2.125-.546-2.815a6.918 6.918 0 00-1.63-2.5 6.918 6.918 0 00-2.5-1.63c-.69-.297-1.535-.489-2.815-.546C15.264 0 14.86 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998zm6.406-11.845a1.44 1.44 0 11-2.881 0 1.44 1.44 0 012.881 0z"/>
-        </svg>
-      </a>
-      <!-- Ícone WhatsApp -->
-      <a href="https://wa.me/5514998798097" target="_blank" aria-label="WhatsApp">
-        <!-- SVG do WhatsApp -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="50" height="50">
-          <path fill="currentColor" d="M20.52 3.48A12.84 12.84 0 0012 0C5.4 0 0 5.4 0 12c0 2.14.53 4.17 1.52 6l-1.52 5.52L7.5 21a11.94 11.94 0 006.5 1.92c6.6 0 12-5.4 12-12 0-3.4-1.4-6.6-3.48-8.52zm-8.52 17.4c-1.74 0-3.42-.52-4.84-1.44l-.34-.2-2.86.94.96-2.84-.2-.34a6.28 6.28 0 01-1.44-4.84 6.3 6.3 0 016.3-6.3c3.48 0 6.3 2.82 6.3 6.3s-2.82 6.3-6.3 6.3zm3.36-4.86c-.18-.09-1.08-.53-1.24-.59s-.3-.09-.42.09-.48.59-.58.72-.22.18-.42.09-.49-.18-.73-.36-.33-.36-.42-.44.24-.36.48-.72.54-.89.72-1.09.27-.15.49-.06.54.24.72.48.33.38.39.44.09.09.15.14c.06.06.06.12.03.21s-.09.21-.27.3z"/>
-        </svg>
-      </a>
+    <!-- Modal para projetos -->
+    <div class="project-modal" id="projectModal">
+        <div class="modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <div class="modal-body">
+                <!-- Conteúdo será preenchido via JavaScript -->
+            </div>
+        </div>
     </div>
-    <p>&copy; 2025 Nckzxz. Todos os direitos reservados.</p>
-  </footer>
 
+    <!-- Depoimentos -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>O que dizem nossos clientes</h2>
+                <p>Feedback de quem experimentou nossa abordagem minimalista</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"A elegância do design transmitiu exatamente a seriedade que nossa marca precisava. As conversões aumentaram significativamente."</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">A</div>
+                        <div class="author-info">
+                            <h4>Ana Silva</h4>
+                            <p>Diretora de Marketing</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"A responsividade do site é impressioante. Funciona perfeitamente em qualquer dispositivo que testamos."</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">C</div>
+                        <div class="author-info">
+                            <h4>Carlos Mendes</h4>
+                            <p>E-commerce Manager</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"O minimalismo do design fez com que nossos produtos se tornassem o verdadeiro destaque, exatamente como esperávamos."</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">M</div>
+                        <div class="author-info">
+                            <h4>Marina Oliveira</h4>
+                            <p>CEO da Empresa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Entre em Contato</h2>
+                <p>Estamos prontos para transformar sua presença digital</p>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" class="form-control" placeholder="Seu nome completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" class="form-control" placeholder="seu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" class="form-control" placeholder="Como podemos ajudar?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Enviar Mensagem</button>
+                    <div id="formMessage" class="form-message"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">Siga nas Redes</a>
+                    <p>Transformando ideias em experiências digitais excepcionais com foco minimalismo e funcionalidade.</p>
+                    <div class="social-links">
+                        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/5514998798097" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#">Início</a></li>
+                        <li><a href="#">Sobre nós</a></li>
+                        <li><a href="#">Serviços</a></li>
+                        <li><a href="#">Portfólio</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Termos de uso</a></li>
+                        <li><a href="#">Política de privacidade</a></li>
+                        <li><a href="#">Cookies</a></li>
+                        <li><a href="#">Ajuda</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links footer-contact">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> São Paulo, SP</li>
+                        <li><i class="fas fa-phone"></i> (14) 99879-8097</li>
+                        <li><i class="fas fa-envelope"></i> ericmitnic@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Nckzxz. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Animação de scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Modal de projetos
+        const projectModal = document.getElementById('projectModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalBody = document.querySelector('.modal-body');
+        const projectItems = document.querySelectorAll('.project-item');
+        
+        // Fechar modal
+        modalClose.addEventListener('click', () => {
+            projectModal.classList.remove('active');
+        });
+        
+        // Fechar modal clicando fora dele
+        projectModal.addEventListener('click', (e) => {
+            if (e.target === projectModal) {
+                projectModal.classList.remove('active');
+            }
+        });
+        
+        // Abrir modal ao clicar em um projeto
+        projectItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const title = item.querySelector('.project-title').textContent;
+                const category = item.querySelector('.project-category').textContent;
+                
+                // Verificar se é um vídeo ou imagem
+                let mediaElement = '';
+                if (item.querySelector('video')) {
+                    const videoSrc = item.querySelector('video source').getAttribute('src');
+                    mediaElement = `<video autoplay muted loop controls>
+                        <source src="${videoSrc}" type="video/mp4">
+                        Seu navegador não suporta vídeos HTML5.
+                    </video>`;
+                } else {
+                    const imgSrc = item.querySelector('img').getAttribute('src');
+                    mediaElement = `<img src="${imgSrc}" alt="${title}">`;
+                }
+                
+                // Conteúdo específico para a Sayu's Shop
+                let modalContent = '';
+                
+                if (title === "Sayu's Shop") {
+                    modalContent = `
+                        ${mediaElement}
+                        <h3 class="modal-title">${title}</h3>
+                        <p class="project-category">${category}</p>
+                        <p class="modal-description">Loja virtual desenvolvida com foco na experiência do usuário e conversão. Design responsivo e integração com os principais gateways de pagamento.</p>
+                    `;
+                } else {
+                    modalContent = `
+                        ${mediaElement}
+                        <h3 class="modal-title">${title}</h3>
+                        <p class="project-category">${category}</p>
+                        <p class="modal-description">Este projeto de web design foi desenvolvido com foco na experiência do usuário e na estética minimalista.</p>
+                        <a href="#" class="btn">Visitar Projeto</a>
+                    `;
+                }
+                
+                modalBody.innerHTML = modalContent;
+                projectModal.classList.add('active');
+            });
+        });
+
+        // Formulário de contato
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Coletar dados do formulário
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const formMessage = document.getElementById('formMessage');
+            
+            // Configurar parâmetros para o email
+            const subject = `Nova mensagem de ${name} - Site N-Tecnologies`;
+            const body = `Nome: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMensagem:%0D%0A${message}`;
+            
+            // Abrir cliente de email padrão
+            window.location.href = `mailto:ericmitnic@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Mostrar mensagem de sucesso
+            formMessage.textContent = 'Obrigado pela mensagem! Seu cliente de email será aberto para finalizar o envio.';
+            formMessage.classList.add('success');
+            
+            // Limpar formulário após envio
+            document.getElementById('contactForm').reset();
+            
+            // Esconder mensagem após 5 segundos
+            setTimeout(() => {
+                formMessage.classList.remove('success');
+            }, 5000);
+        });
+    </script>
 </body>
 </html>
