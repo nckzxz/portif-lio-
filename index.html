@@ -6,7 +6,7 @@
     <title>N-Tecnologies</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Variáveis de cores - preto e branco */
+        /* Variáveis de cores - modo claro (padrão) */
         :root {
             --primary: #000000;
             --secondary: #333333;
@@ -18,6 +18,31 @@
             --gray-light: #e0e0e0;
             --gray-medium: #9e9e9e;
             --success: #4CAF50;
+            --card-bg: #ffffff;
+            --footer-bg: #111111;
+            --footer-text: #cccccc;
+            --border-color: #e0e0e0;
+            --shadow-color: rgba(0, 0, 0, 0.07);
+            --project-overlay: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Modo escuro */
+        [data-theme="dark"] {
+            --primary: #ffffff;
+            --secondary: #cccccc;
+            --accent: #888888;
+            --light: #1a1a1a;
+            --dark: #f5f5f5;
+            --text: #e0e0e0;
+            --background: #121212;
+            --gray-light: #333333;
+            --gray-medium: #666666;
+            --card-bg: #1e1e1e;
+            --footer-bg: #000000;
+            --footer-text: #999999;
+            --border-color: #333333;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --project-overlay: rgba(0, 0, 0, 0.9);
         }
 
         /* Reset e estilos base */
@@ -25,6 +50,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         body {
@@ -50,8 +76,8 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.07);
-            border-bottom: 1px solid var(--gray-light);
+            box-shadow: 0 2px 15px var(--shadow-color);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .navbar {
@@ -71,6 +97,7 @@
         .nav-links {
             display: flex;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links li {
@@ -114,6 +141,29 @@
             border: none;
         }
 
+        /* Toggle Theme Button */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--secondary);
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 20px;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--light);
+        }
+
+        .theme-toggle:hover {
+            color: var(--primary);
+            transform: rotate(30deg);
+        }
+
         /* Hero Section */
         .hero {
             padding: 120px 0 100px;
@@ -130,7 +180,7 @@
             left: 0;
             width: 100%;
             height: 1px;
-            background: var(--gray-light);
+            background: var(--border-color);
         }
 
         .hero h1 {
@@ -158,7 +208,7 @@
             display: inline-block;
             padding: 14px 36px;
             background: var(--primary);
-            color: white;
+            color: var(--background);
             text-decoration: none;
             border-radius: 2px;
             font-weight: 600;
@@ -178,12 +228,12 @@
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 20px var(--shadow-color);
         }
 
         .btn-outline:hover {
             background: var(--primary);
-            color: white;
+            color: var(--background);
         }
 
         /* Seções */
@@ -199,7 +249,7 @@
             left: 0;
             width: 100%;
             height: 1px;
-            background: var(--gray-light);
+            background: var(--border-color);
         }
 
         .section-title {
@@ -247,18 +297,18 @@
         }
 
         .feature-card {
-            background: var(--background);
+            background: var(--card-bg);
             padding: 40px 30px;
-            border-radius: 2px;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            box-shadow: 0 3px 15px var(--shadow-color);
             transition: all 0.3s ease;
             text-align: center;
-            border: 1px solid var(--gray-light);
+            border: 1px solid var(--border-color);
         }
 
         .feature-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.09);
+            box-shadow: 0 12px 25px var(--shadow-color);
             border-color: var(--gray-medium);
         }
 
@@ -302,8 +352,8 @@
         .project-item {
             position: relative;
             overflow: hidden;
-            border-radius: 2px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px var(--shadow-color);
             height: 250px;
             cursor: pointer;
         }
@@ -322,7 +372,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: var(--project-overlay);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -401,9 +451,9 @@
             width: 90%;
             max-height: 90vh;
             overflow: auto;
-            background: var(--background);
+            background: var(--card-bg);
             padding: 30px;
-            border-radius: 2px;
+            border-radius: 8px;
         }
 
         .modal-close {
@@ -411,7 +461,7 @@
             top: 15px;
             right: 15px;
             background: var(--primary);
-            color: white;
+            color: var(--background);
             width: 35px;
             height: 35px;
             border-radius: 50%;
@@ -430,7 +480,7 @@
         .modal-body img,
         .modal-body video {
             width: 100%;
-            border-radius: 2px;
+            border-radius: 8px;
             margin-bottom: 20px;
         }
 
@@ -458,11 +508,11 @@
         }
 
         .testimonial-card {
-            background: var(--background);
+            background: var(--card-bg);
             padding: 35px 30px;
-            border-radius: 2px;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--gray-light);
+            border-radius: 8px;
+            box-shadow: 0 3px 15px var(--shadow-color);
+            border: 1px solid var(--border-color);
             position: relative;
         }
 
@@ -500,7 +550,7 @@
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            color: white;
+            color: var(--light);
             font-size: 1.2rem;
         }
 
@@ -522,11 +572,11 @@
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
-            background: var(--background);
+            background: var(--card-bg);
             padding: 45px;
-            border-radius: 2px;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--gray-light);
+            border-radius: 8px;
+            box-shadow: 0 3px 15px var(--shadow-color);
+            border: 1px solid var(--border-color);
         }
 
         .form-group {
@@ -544,8 +594,8 @@
         .form-control {
             width: 100%;
             padding: 14px 16px;
-            border: 1px solid var(--gray-light);
-            border-radius: 2px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
             font-size: 1rem;
             transition: all 0.3s ease;
             font-family: inherit;
@@ -568,7 +618,7 @@
         .form-message {
             margin-top: 20px;
             padding: 15px;
-            border-radius: 2px;
+            border-radius: 8px;
             text-align: center;
             display: none;
         }
@@ -582,8 +632,8 @@
 
         /* Rodapé */
         footer {
-            background: var(--dark);
-            color: white;
+            background: var(--footer-bg);
+            color: var(--footer-text);
             padding: 70px 0 30px;
         }
 
@@ -599,11 +649,11 @@
             font-weight: 800;
             margin-bottom: 22px;
             display: block;
-            color: white;
+            color: var(--primary);
         }
 
         .footer-about p {
-            color: #ccc;
+            color: var(--footer-text);
             line-height: 1.6;
             margin-bottom: 25px;
             max-width: 300px;
@@ -615,7 +665,7 @@
         }
 
         .social-links a {
-            color: white;
+            color: var(--primary);
             font-size: 1.1rem;
             transition: all 0.3s ease;
             width: 38px;
@@ -628,8 +678,8 @@
         }
 
         .social-links a:hover {
-            color: var(--primary);
-            background: white;
+            color: var(--footer-bg);
+            background: var(--primary);
             transform: translateY(-3px);
         }
 
@@ -639,6 +689,7 @@
             position: relative;
             padding-bottom: 12px;
             font-weight: 700;
+            color: var(--primary);
         }
 
         .footer-links h4::after {
@@ -648,7 +699,7 @@
             left: 0;
             width: 35px;
             height: 2px;
-            background: white;
+            background: var(--primary);
         }
 
         .footer-links ul {
@@ -660,14 +711,14 @@
         }
 
         .footer-links a {
-            color: #ccc;
+            color: var(--footer-text);
             text-decoration: none;
             transition: all 0.3s ease;
             font-size: 0.95rem;
         }
 
         .footer-links a:hover {
-            color: white;
+            color: var(--primary);
             padding-left: 5px;
         }
 
@@ -679,14 +730,14 @@
 
         .footer-contact i {
             margin-right: 12px;
-            color: white;
+            color: var(--primary);
         }
 
         .copyright {
             text-align: center;
             padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #999;
+            color: var(--gray-medium);
             font-size: 0.9rem;
         }
 
@@ -758,7 +809,7 @@
                 align-items: flex-start;
                 justify-content: flex-start;
                 transition: all 0.4s ease;
-                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.08);
+                box-shadow: 5px 0 15px var(--shadow-color);
                 padding: 30px;
                 overflow-y: auto;
             }
@@ -777,6 +828,11 @@
                 padding: 8px 0;
                 display: block;
                 width: 100%;
+            }
+
+            .theme-toggle {
+                margin: 20px 0 0 0;
+                align-self: center;
             }
 
             .hero {
@@ -884,6 +940,11 @@
                 <li><a href="#projects">Meus Projetos</a></li>
                 <li><a href="#testimonials">Depoimentos</a></li>
                 <li><a href="#contact">Contato</a></li>
+                <li>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
             </ul>
         </div>
     </header>
@@ -1054,10 +1115,10 @@
                     <h4>Links Rápidos</h4>
                     <ul>
                         <li><a href="#">Início</a></li>
-                        <li><a href="#">Sobre nós</a></li>
-                        <li><a href="#">Serviços</a></li>
-                        <li><a href="#">Portfólio</a></li>
-                        <li><a href="#">Contato</a></li>
+                        <li><a href="#features">Recursos</a></li>
+                        <li><a href="#projects">Projetos</a></li>
+                        <li><a href="#testimonials">Depoimentos</a></li>
+                        <li><a href="#contact">Contato</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -1205,6 +1266,34 @@
             setTimeout(() => {
                 formMessage.classList.remove('success');
             }, 5000);
+        });
+
+        // Alternador de tema (claro/escuro)
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Verificar se há uma preferência salva
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            }
         });
     </script>
 </body>
