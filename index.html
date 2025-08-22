@@ -24,6 +24,8 @@
             --border-color: #e0e0e0;
             --shadow-color: rgba(0, 0, 0, 0.07);
             --project-overlay: rgba(0, 0, 0, 0.8);
+            --gradient-primary: linear-gradient(135deg, #000000 0%, #333333 100%);
+            --gradient-accent: linear-gradient(135deg, #666666 0%, #888888 100%);
         }
 
         /* Modo escuro */
@@ -43,6 +45,8 @@
             --border-color: #333333;
             --shadow-color: rgba(0, 0, 0, 0.3);
             --project-overlay: rgba(0, 0, 0, 0.9);
+            --gradient-primary: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
+            --gradient-accent: linear-gradient(135deg, #888888 0%, #aaaaaa 100%);
         }
 
         /* Reset e estilos base */
@@ -78,6 +82,8 @@
             z-index: 100;
             box-shadow: 0 2px 15px var(--shadow-color);
             border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .navbar {
@@ -92,6 +98,10 @@
             color: var(--primary);
             text-decoration: none;
             letter-spacing: -0.5px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav-links {
@@ -192,6 +202,10 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero p {
@@ -207,7 +221,7 @@
         .btn {
             display: inline-block;
             padding: 14px 36px;
-            background: var(--primary);
+            background: var(--gradient-primary);
             color: var(--background);
             text-decoration: none;
             border-radius: 2px;
@@ -217,23 +231,46 @@
             letter-spacing: 0.5px;
             text-transform: uppercase;
             font-size: 0.9rem;
-            border: 1px solid var(--primary);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: var(--gradient-accent);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn:hover:before {
+            width: 100%;
         }
 
         .btn-outline {
             background: transparent;
             color: var(--primary);
             margin-left: 15px;
+            border: 1px solid var(--primary);
+        }
+
+        .btn-outline:before {
+            background: var(--gradient-primary);
+        }
+
+        .btn-outline:hover {
+            color: var(--background);
         }
 
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px var(--shadow-color);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary);
-            color: var(--background);
         }
 
         /* Seções */
@@ -264,6 +301,10 @@
             position: relative;
             display: inline-block;
             font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .section-title h2::after {
@@ -274,7 +315,7 @@
             transform: translateX(-50%);
             width: 60px;
             height: 3px;
-            background: var(--primary);
+            background: var(--gradient-primary);
         }
 
         .section-title p {
@@ -299,11 +340,29 @@
         .feature-card {
             background: var(--card-bg);
             padding: 40px 30px;
-            border-radius: 8px;
+            border-radius: 12px;
             box-shadow: 0 3px 15px var(--shadow-color);
             transition: all 0.3s ease;
             text-align: center;
             border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gradient-primary);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover:before {
+            width: 100%;
+            opacity: 0.05;
         }
 
         .feature-card:hover {
@@ -325,17 +384,23 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            z-index: 1;
         }
 
         .feature-card h3 {
             font-size: 1.4rem;
             margin-bottom: 18px;
             font-weight: 700;
+            position: relative;
+            z-index: 1;
         }
 
         .feature-card p {
             color: var(--secondary);
             line-height: 1.6;
+            position: relative;
+            z-index: 1;
         }
 
         /* Seção de Projetos */
@@ -352,10 +417,15 @@
         .project-item {
             position: relative;
             overflow: hidden;
-            border-radius: 8px;
+            border-radius: 12px;
             box-shadow: 0 5px 15px var(--shadow-color);
             height: 250px;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .project-item:hover {
+            box-shadow: 0 10px 25px var(--shadow-color);
         }
 
         .project-item img,
@@ -453,7 +523,8 @@
             overflow: auto;
             background: var(--card-bg);
             padding: 30px;
-            border-radius: 8px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .modal-close {
@@ -471,6 +542,11 @@
             cursor: pointer;
             font-size: 1.2rem;
             z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            transform: rotate(90deg);
         }
 
         .modal-body {
@@ -510,10 +586,16 @@
         .testimonial-card {
             background: var(--card-bg);
             padding: 35px 30px;
-            border-radius: 8px;
+            border-radius: 12px;
             box-shadow: 0 3px 15px var(--shadow-color);
             border: 1px solid var(--border-color);
             position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--shadow-color);
         }
 
         .testimonial-card:before {
@@ -545,7 +627,7 @@
             height: 50px;
             border-radius: 50%;
             margin-right: 15px;
-            background: var(--dark);
+            background: var(--gradient-primary);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -574,7 +656,7 @@
             margin: 0 auto;
             background: var(--card-bg);
             padding: 45px;
-            border-radius: 8px;
+            border-radius: 12px;
             box-shadow: 0 3px 15px var(--shadow-color);
             border: 1px solid var(--border-color);
         }
@@ -650,6 +732,10 @@
             margin-bottom: 22px;
             display: block;
             color: var(--primary);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .footer-about p {
@@ -699,7 +785,7 @@
             left: 0;
             width: 35px;
             height: 2px;
-            background: var(--primary);
+            background: var(--gradient-primary);
         }
 
         .footer-links ul {
@@ -1015,6 +1101,19 @@
                         <a href="#" class="project-link">Ver Detalhes</a>
                     </div>
                 </div>
+
+                <!-- Projeto 2 - Manutenção e Fliperamas-->
+                <div class="project-item">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://i.imgur.com/gbEby4m.mp4" type="video/mp4">
+                        Seu navegador não suporta vídeos HTML5.
+                    </video>
+                    <div class="project-overlay">
+                        <h3 class="project-title">Jtech Bowlingames</h3>
+                        <p class="project-category">Manutenção de Boliches e Fliperamas</p>
+                        <a href="#" class="project-link">Ver Detalhes</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1121,154 +1220,33 @@
                         <li><a href="#contact">Contato</a></li>
                     </ul>
                 </div>
-                <div class="footer-links">
-                    <h4>Suporte</h4>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Termos de uso</a></li>
-                        <li><a href="#">Política de privacidade</a></li>
-                        <li><a href="#">Cookies</a></li>
-                        <li><a href="#">Ajuda</a></li>
-                    </ul>
-                </div>
                 <div class="footer-links footer-contact">
                     <h4>Contato</h4>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> São Paulo, SP</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Bocaina, SP</li>
                         <li><i class="fas fa-phone"></i> (14) 99879-8097</li>
                         <li><i class="fas fa-envelope"></i> ericmitnic@gmail.com</li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Nckzxz. Todos os direitos reservados.</p>
+                <p>&copy; 2025 nckzxz. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
     <script>
         // Menu mobile toggle
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            document.getElementById('navLinks').classList.toggle('active');
-        });
-
-        // Fechar menu ao clicar em um link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('navLinks').classList.remove('active');
-            });
-        });
-
-        // Animação de scroll suave
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Modal de projetos
-        const projectModal = document.getElementById('projectModal');
-        const modalClose = document.getElementById('modalClose');
-        const modalBody = document.querySelector('.modal-body');
-        const projectItems = document.querySelectorAll('.project-item');
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
         
-        // Fechar modal
-        modalClose.addEventListener('click', () => {
-            projectModal.classList.remove('active');
-        });
-        
-        // Fechar modal clicando fora dele
-        projectModal.addEventListener('click', (e) => {
-            if (e.target === projectModal) {
-                projectModal.classList.remove('active');
-            }
-        });
-        
-        // Abrir modal ao clicar em um projeto
-        projectItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const title = item.querySelector('.project-title').textContent;
-                const category = item.querySelector('.project-category').textContent;
-                
-                // Verificar se é um vídeo ou imagem
-                let mediaElement = '';
-                if (item.querySelector('video')) {
-                    const videoSrc = item.querySelector('video source').getAttribute('src');
-                    mediaElement = `<video autoplay muted loop controls>
-                        <source src="${videoSrc}" type="video/mp4">
-                        Seu navegador não suporta vídeos HTML5.
-                    </video>`;
-                } else {
-                    const imgSrc = item.querySelector('img').getAttribute('src');
-                    mediaElement = `<img src="${imgSrc}" alt="${title}">`;
-                }
-                
-                // Conteúdo específico para a Sayu's Shop
-                let modalContent = '';
-                
-                if (title === "Sayu's Shop") {
-                    modalContent = `
-                        ${mediaElement}
-                        <h3 class="modal-title">${title}</h3>
-                        <p class="project-category">${category}</p>
-                        <p class="modal-description">Loja virtual desenvolvida com foco na experiência do usuário e conversão. Design responsivo e integração com os principais gateways de pagamento.</p>
-                    `;
-                } else {
-                    modalContent = `
-                        ${mediaElement}
-                        <h3 class="modal-title">${title}</h3>
-                        <p class="project-category">${category}</p>
-                        <p class="modal-description">Este projeto de web design foi desenvolvido com foco na experiência do usuário e na estética minimalista.</p>
-                        <a href="#" class="btn">Visitar Projeto</a>
-                    `;
-                }
-                
-                modalBody.innerHTML = modalContent;
-                projectModal.classList.add('active');
-            });
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
 
-        // Formulário de contato
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Coletar dados do formulário
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            const formMessage = document.getElementById('formMessage');
-            
-            // Configurar parâmetros para o email
-            const subject = `Nova mensagem de ${name} - Site N-Tecnologies`;
-            const body = `Nome: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMensagem:%0D%0A${message}`;
-            
-            // Abrir cliente de email padrão
-            window.location.href = `mailto:ericmitnic@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            
-            // Mostrar mensagem de sucesso
-            formMessage.textContent = 'Obrigado pela mensagem! Seu cliente de email será aberto para finalizar o envio.';
-            formMessage.classList.add('success');
-            
-            // Limpar formulário após envio
-            document.getElementById('contactForm').reset();
-            
-            // Esconder mensagem após 5 segundos
-            setTimeout(() => {
-                formMessage.classList.remove('success');
-            }, 5000);
-        });
-
-        // Alternador de tema (claro/escuro)
+        // Tema claro/escuro
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('i');
         
@@ -1282,7 +1260,6 @@
         
         themeToggle.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
-            
             if (currentTheme === 'dark') {
                 document.documentElement.removeAttribute('data-theme');
                 themeIcon.classList.remove('fa-sun');
@@ -1294,6 +1271,88 @@
                 themeIcon.classList.add('fa-sun');
                 localStorage.setItem('theme', 'dark');
             }
+        });
+
+        // Formulário de contato
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Simulação de envio bem-sucedido
+            formMessage.textContent = 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
+            formMessage.classList.add('success');
+            
+            // Limpar o formulário
+            contactForm.reset();
+            
+            // Esconder a mensagem após 5 segundos
+            setTimeout(() => {
+                formMessage.classList.remove('success');
+            }, 5000);
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Modal de projetos
+        const projectModal = document.getElementById('projectModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalBody = document.querySelector('.modal-body');
+        
+        document.querySelectorAll('.project-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const projectItem = e.target.closest('.project-item');
+                const projectTitle = projectItem.querySelector('.project-title').textContent;
+                const projectCategory = projectItem.querySelector('.project-category').textContent;
+                
+                modalBody.innerHTML = `
+                    <h3 class="modal-title">${projectTitle}</h3>
+                    <p class="modal-category">${projectCategory}</p>
+                    ${projectItem.querySelector('video') ? projectItem.querySelector('video').outerHTML : ''}
+                    <p class="modal-description">Este projeto foi desenvolvido com foco em design minimalista e responsivo, priorizando a experiência do usuário e a performance. Utilizamos as melhores práticas de desenvolvimento web para garantir um resultado moderno e eficiente.</p>
+                `;
+                
+                projectModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        modalClose.addEventListener('click', () => {
+            projectModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        projectModal.addEventListener('click', (e) => {
+            if (e.target === projectModal) {
+                projectModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Suavizar rolagem para âncoras
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
     </script>
 </body>
